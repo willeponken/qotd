@@ -1,11 +1,11 @@
 "use strict";
 
-const PORT      = process.argv[3] || 17;
-const QUOTES_FILE  = process.argv[2] || 'quotes.json';
-const UPDATE_INTERVAL  = 8.64 * Math.pow(10, 7); // One day
+const PORT            = process.argv[3] || 17,
+      QUOTES_FILE     = process.argv[2] || 'quotes.json',
+      UPDATE_INTERVAL = 8.64 * Math.pow(10, 7); // One day
 
-var net         = require('net'),
-    fs          = require('fs');
+var net = require('net'),
+    fs  = require('fs');
 
 function loadQuotes(file, callback) {
   fs.readFile(file, function (err, data) {

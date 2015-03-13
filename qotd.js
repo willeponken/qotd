@@ -1,11 +1,11 @@
 "use strict";
 
 const PORT      = process.argv[3] || 17;
+const QUOTES_FILE  = process.argv[2] || 'quotes.json';
 const UPDATE_INTERVAL  = 8.64 * Math.pow(10, 7); // One day
 
 var net         = require('net'),
-    fs          = require('fs'),
-    quotesFile  = process.argv[2];
+    fs          = require('fs');
 
 function loadQuotes(file, callback) {
   fs.readFile(file, function (err, data) {
@@ -24,7 +24,7 @@ function getQuote(quotes) {
   return quote.quote + (quote.author ? '\r\n\t - ' + quote.author : '');
 }
 
-loadQuotes(quotesFile, function(quotes) {
+loadQuotes(QUOTES_FILE, function(quotes) {
 
   function updateQuotes(file, interval) {
     setInterval(function updateLoop() {
@@ -37,7 +37,7 @@ loadQuotes(quotesFile, function(quotes) {
       });
     }, interval);
   }
-  updateQuotes(quotesFile, UPDATE_INTERVAL);
+  updateQuotes(QUOTES_FILE, UPDATE_INTERVAL);
 
 
   var qotd = net.createServer(function(client) {

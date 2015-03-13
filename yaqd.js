@@ -40,7 +40,7 @@ loadQuotes(QUOTES_FILE, function(quotes) {
   updateQuotes(QUOTES_FILE, UPDATE_INTERVAL);
 
 
-  var qotd = net.createServer(function(client) {
+  var yaqd = net.createServer(function(client) {
     console.info('Client connected');
 
     client.on('end', function() {
@@ -51,7 +51,7 @@ loadQuotes(QUOTES_FILE, function(quotes) {
     client.end();
   });
 
-  qotd.listen(PORT, function() {
+  yaqd.listen(PORT, function() {
     console.info('Server bound');
   });
 });
